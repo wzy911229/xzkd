@@ -1043,7 +1043,7 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = QNWSSM6MTS;
+				DEVELOPMENT_TEAM = 9AVM6972QD;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1117,7 +1117,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = yiwujunyi.SuperLoans.com;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = terminus;
+				PROVISIONING_PROFILE_SPECIFIER = pigFinance;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -1131,7 +1131,7 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = QNWSSM6MTS;
+				DEVELOPMENT_TEAM = 9AVM6972QD;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1205,7 +1205,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = yiwujunyi.SuperLoans.com;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = terminus;
+				PROVISIONING_PROFILE_SPECIFIER = pigFinance;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
