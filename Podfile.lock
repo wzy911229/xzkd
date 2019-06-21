@@ -1,0 +1,72 @@
+PODS:
+  - AFNetworking (3.2.1):
+    - AFNetworking/NSURLSession (= 3.2.1)
+    - AFNetworking/Reachability (= 3.2.1)
+    - AFNetworking/Security (= 3.2.1)
+    - AFNetworking/Serialization (= 3.2.1)
+    - AFNetworking/UIKit (= 3.2.1)
+  - AFNetworking/NSURLSession (3.2.1):
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+  - AFNetworking/Reachability (3.2.1)
+  - AFNetworking/Security (3.2.1)
+  - AFNetworking/Serialization (3.2.1)
+  - AFNetworking/UIKit (3.2.1):
+    - AFNetworking/NSURLSession
+  - BlocksKit (2.2.5):
+    - BlocksKit/All (= 2.2.5)
+  - BlocksKit/All (2.2.5):
+    - BlocksKit/Core
+    - BlocksKit/DynamicDelegate
+    - BlocksKit/MessageUI
+    - BlocksKit/UIKit
+  - BlocksKit/Core (2.2.5)
+  - BlocksKit/DynamicDelegate (2.2.5)
+  - BlocksKit/MessageUI (2.2.5):
+    - BlocksKit/Core
+    - BlocksKit/DynamicDelegate
+  - BlocksKit/UIKit (2.2.5):
+    - BlocksKit/Core
+    - BlocksKit/DynamicDelegate
+  - IQKeyboardManager (6.4.0)
+  - KMNavigationBarTransition (1.1.5)
+  - Masonry (1.1.0)
+  - MJExtension (3.0.17)
+  - MJRefresh (3.2.0)
+  - MoxieSDK-iOS (2.4.4)
+  - SDWebImage (5.0.6):
+    - SDWebImage/Core (= 5.0.6)
+  - SDWebImage/Core (5.0.6)
+  - SVProgressHUD (2.2.5)
+  - TYCyclePagerView (1.2.0)
+
+DEPENDENCIES:
+  - AFNetworking (= 3.2.1)
+  - BlocksKit (= 2.2.5)
+  - IQKeyboardManager (= 6.4.0)
+  - KMNavigationBarTransition (= 1.1.5)
+  - Masonry (= 1.1.0)
+  - MJExtension (= 3.0.17)
+  - MJRefresh (= 3.2.0)
+  - MoxieSDK-iOS (= 2.4.4)
+  - SDWebImage (= 5.0.6)
+  - SVProgressHUD
+  - TYCyclePagerView
+
+SPEC CHECKSUMS:
+  AFNetworking: b6f891fdfaed196b46c7a83cf209e09697b94057
+  BlocksKit: 7f422b971407001178d181a43b99014ea2591fe6
+  IQKeyboardManager: fcef267266379c003181fc3592f6bdb8bf4db839
+  KMNavigationBarTransition: 7a52c9bc25b39b6e3343e980b453facee1591b82
+  Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
+  MJExtension: 74ec83124a68891619fb7ba9c5c811bbf1691076
+  MJRefresh: ed450d6eb9d3346a2cb033ab7eb6de090aeef437
+  MoxieSDK-iOS: cbd286daef4ca6ec86cb00e86228d4d4366ccc70
+  SDWebImage: 920f1a2ff1ca8296ad34f6e0510a1ef1d70ac965
+  SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
+  TYCyclePagerView: 2b051dade0615c70784aa34f40c646feeddb7344
+
+PODFILE CHECKSUM: b98d9ddbfbf444fa44edbe30b7262150d613d38e
+
+COCOAPODS: 1.4.0
