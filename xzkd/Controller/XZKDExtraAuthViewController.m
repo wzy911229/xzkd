@@ -21,6 +21,7 @@
 @implementation XZKDExtraAuthViewController {
     UIButton *_linkManBtn;
     NSArray *_linkMans;
+    XZExtraAuthView * _authView;
 
 }
 
@@ -29,6 +30,7 @@
     XZExtraAuthView * authView = [[XZExtraAuthView alloc] init];
     authView.delegate = self;
     [self.view addSubview:authView];
+    _authView = authView;
     [authView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.left.right.bottom.equalTo(self.view);
     }];
@@ -47,6 +49,7 @@
 - (void)addressBookViewControllerFinishSelectLinkMans:(NSArray *)LinkMans {
     _linkManBtn.hidden = YES;
     _linkMans = LinkMans;
+    _authView.linkMas = LinkMans;
 }
 
 

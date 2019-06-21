@@ -9,7 +9,9 @@
 #import "XZAddressBookPopverViewController.h"
 
 @interface XZAddressBookPopverViewController ()<UIGestureRecognizerDelegate>
+@property (weak, nonatomic) IBOutlet UIButton *parents;
 @property (weak, nonatomic) IBOutlet UIView *contentView;
+
 @property (weak, nonatomic) IBOutlet UIButton *kinsfolk;
 @property (weak, nonatomic) IBOutlet UIButton *friend;
 @property (weak, nonatomic) IBOutlet UIButton *lover;
@@ -46,6 +48,10 @@
     [self.view removeFromSuperview];
 }
 
+- (IBAction)onPressParents:(UIButton *)sender {
+    [self selectBtn:sender.tag];
+
+}
 
 - (IBAction)onPressKinsfolk:(UIButton *)sender {
     [self selectBtn:sender.tag];
@@ -72,13 +78,16 @@
   
     switch (_selectTag) {
         case 1001:
-            contact_sign = @"亲人";
+            contact_sign = @"父母亲";
             break;
         case 1002:
-            contact_sign = @"朋友";
+            contact_sign = @"配偶";
             break;
         case 1003:
-            contact_sign = @"恋人";
+            contact_sign = @"同事";
+            break;
+        case 1004:
+            contact_sign = @"亲友";
             break;
         default:
             break;
@@ -115,10 +124,12 @@
 
 - (void)selectBtn:(NSInteger)type {
     
-    NSArray * btnArray = @[_kinsfolk,_lover,_friend];
+    NSArray * btnArray = @[_kinsfolk,_lover,_friend,_parents];
     for (UIButton * btn in btnArray) {
-        _selectTag = btn.tag;
-        NSString * imageName = btn.tag == type ?@"choose" : @"unchoose";
+        if ( btn.tag == type) {
+            _selectTag = btn.tag;
+        }
+        NSString * imageName = btn.tag == type ? @"choose" : @"unchoose";
         [btn setImage:[UIImage imageNamed:imageName] forState:UIControlStateNormal];
     }
 }

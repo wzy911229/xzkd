@@ -72,7 +72,7 @@
     //紧急联系人
     UIButton *  linkman= [UIButton buttonWithType:UIButtonTypeCustom];
     
-    [linkman setTitle:@"获取紧急联系人" forState:UIControlStateNormal];
+    [linkman setTitle:@"获取两位紧急联系人" forState:UIControlStateNormal];
     [linkman addTarget:self action:@selector(onPressLinkmanBtn) forControlEvents:UIControlEventTouchUpInside];
     [linkman setBackgroundColor:[UIColor whiteColor]];
     [linkman setTitleColor:kOriginColor forState:UIControlStateNormal];
@@ -129,6 +129,32 @@
     
 }
 
+- (void)setLinkMas:(NSArray *)linkMas {
+    _linkMas = linkMas;
+    
+//    [resultInfo setObject:contact_sign forKey:@"contact_sign"];
+//    [resultInfo setObject:phone forKey:@"contact_phone"];
+//    [resultInfo setObject:_selectInfo[@"name"] forKey:@"contact_name"];
+    
+    __weak typeof (self) weakSelf = self;
+    __block __weak typeof(_textField) _weakTextField= _textField;
+
+    [linkMas enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        NSString *des  =  kFormat(@"%@   %@   %@", obj[@"contact_name"], obj[@"contact_phone"],obj[@"contact_sign"]);
+        UILabel * linkMan = [[UILabel alloc] init];
+        linkMan.text = des;
+        linkMan.contentMode = UIViewContentModeCenter;
+        [weakSelf addSubview:linkMan];
+        [linkMan mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.right.equalTo(weakSelf);
+            make.top.mas_equalTo(_weakTextField.mas_bottom).offset(idx * 44 + 2);
+            make.height.mas_equalTo(44);
+        }];
+    }];
+   
+    
+    
+}
 
 
 - (void)onPressAddressBtn {

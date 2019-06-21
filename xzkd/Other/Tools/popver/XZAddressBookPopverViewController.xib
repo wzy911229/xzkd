@@ -16,6 +16,7 @@
                 <outlet property="friend" destination="Dv3-ar-AEM" id="jtw-e5-rhO"/>
                 <outlet property="kinsfolk" destination="UED-NC-Eqg" id="NmK-TT-us5"/>
                 <outlet property="lover" destination="5MX-9z-NKS" id="0YO-us-A10"/>
+                <outlet property="parents" destination="LXY-1j-ugs" id="ioh-nb-Vza"/>
                 <outlet property="textfield" destination="LFU-9S-N4w" id="mJz-YT-ARo"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -52,46 +53,60 @@
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <textInputTraits key="textInputTraits"/>
                         </textField>
-                        <button opaque="NO" tag="1002" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dv3-ar-AEM">
-                            <rect key="frame" x="117.5" y="106" width="100" height="20"/>
+                        <button opaque="NO" tag="1003" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dv3-ar-AEM">
+                            <rect key="frame" x="117.5" y="121" width="100" height="20"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="100" id="kj7-jp-fOh"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
                             <inset key="titleEdgeInsets" minX="10" minY="0.0" maxX="0.0" maxY="0.0"/>
-                            <state key="normal" title="朋友" image="unchoose">
+                            <state key="normal" title="同事" image="unchoose">
                                 <color key="titleColor" red="0.99607843139999996" green="0.27450980390000002" blue="0.023529411760000001" alpha="1" colorSpace="calibratedRGB"/>
                             </state>
                             <connections>
                                 <action selector="onPressFriend:" destination="-1" eventType="touchUpInside" id="Es0-JT-f9U"/>
                             </connections>
                         </button>
-                        <button opaque="NO" tag="1003" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5MX-9z-NKS">
-                            <rect key="frame" x="117.5" y="146" width="100" height="20"/>
+                        <button opaque="NO" tag="1004" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5MX-9z-NKS">
+                            <rect key="frame" x="117.5" y="156" width="100" height="20"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="100" id="ebX-k2-2kq"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
                             <inset key="titleEdgeInsets" minX="10" minY="0.0" maxX="0.0" maxY="0.0"/>
-                            <state key="normal" title="恋人" image="unchoose">
+                            <state key="normal" title="亲友" image="unchoose">
                                 <color key="titleColor" red="0.99607843139999996" green="0.27450980390000002" blue="0.023529411760000001" alpha="1" colorSpace="calibratedRGB"/>
                             </state>
                             <connections>
                                 <action selector="onPressLover:" destination="-1" eventType="touchUpInside" id="jhZ-EG-u3h"/>
                             </connections>
                         </button>
-                        <button opaque="NO" tag="1001" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UED-NC-Eqg">
-                            <rect key="frame" x="117.5" y="66" width="100" height="20"/>
+                        <button opaque="NO" tag="1002" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UED-NC-Eqg">
+                            <rect key="frame" x="117.5" y="86" width="100" height="20"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="100" id="hno-BT-lr1"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
                             <inset key="titleEdgeInsets" minX="10" minY="0.0" maxX="0.0" maxY="0.0"/>
-                            <state key="normal" title="亲人" image="unchoose">
+                            <state key="normal" title="配偶" image="unchoose">
                                 <color key="titleColor" red="0.99607843139999996" green="0.27450980390000002" blue="0.023529411760000001" alpha="1" colorSpace="calibratedRGB"/>
                             </state>
                             <connections>
                                 <action selector="onPressKinsfolk:" destination="-1" eventType="touchUpInside" id="ulX-Kd-uOo"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" tag="1001" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LXY-1j-ugs">
+                            <rect key="frame" x="117.5" y="51" width="100" height="20"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="100" id="Ihw-hH-IIm"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                            <inset key="titleEdgeInsets" minX="10" minY="0.0" maxX="0.0" maxY="0.0"/>
+                            <state key="normal" title="父母亲" image="unchoose">
+                                <color key="titleColor" red="0.99607843139999996" green="0.27450980390000002" blue="0.023529411760000001" alpha="1" colorSpace="calibratedRGB"/>
+                            </state>
+                            <connections>
+                                <action selector="onPressParents:" destination="-1" eventType="touchUpInside" id="Bj6-VI-wEV"/>
                             </connections>
                         </button>
                     </subviews>
@@ -101,13 +116,15 @@
                         <constraint firstAttribute="height" constant="300" id="2nK-aY-HnB"/>
                         <constraint firstItem="KMO-26-1tC" firstAttribute="top" secondItem="Acv-CJ-InF" secondAttribute="top" constant="20" id="4yC-Ku-jA3"/>
                         <constraint firstItem="7FF-nH-CSc" firstAttribute="centerX" secondItem="Acv-CJ-InF" secondAttribute="centerX" id="Aar-gZ-ZQT"/>
-                        <constraint firstItem="LFU-9S-N4w" firstAttribute="top" secondItem="5MX-9z-NKS" secondAttribute="bottom" constant="20" id="BN7-FK-J9m"/>
+                        <constraint firstItem="LFU-9S-N4w" firstAttribute="top" secondItem="5MX-9z-NKS" secondAttribute="bottom" constant="10" id="BN7-FK-J9m"/>
                         <constraint firstItem="UED-NC-Eqg" firstAttribute="centerX" secondItem="Acv-CJ-InF" secondAttribute="centerX" id="GrD-qr-xP9"/>
+                        <constraint firstItem="UED-NC-Eqg" firstAttribute="top" secondItem="LXY-1j-ugs" secondAttribute="bottom" constant="15" id="Is6-ez-L1l"/>
                         <constraint firstItem="Dv3-ar-AEM" firstAttribute="centerX" secondItem="Acv-CJ-InF" secondAttribute="centerX" id="JXa-TT-uEC"/>
-                        <constraint firstItem="5MX-9z-NKS" firstAttribute="top" secondItem="Dv3-ar-AEM" secondAttribute="bottom" constant="20" id="OnJ-Tz-joP"/>
+                        <constraint firstItem="5MX-9z-NKS" firstAttribute="top" secondItem="Dv3-ar-AEM" secondAttribute="bottom" constant="15" id="OnJ-Tz-joP"/>
+                        <constraint firstItem="LXY-1j-ugs" firstAttribute="centerX" secondItem="Acv-CJ-InF" secondAttribute="centerX" id="PfZ-Cy-lmH"/>
                         <constraint firstItem="LFU-9S-N4w" firstAttribute="leading" secondItem="Acv-CJ-InF" secondAttribute="leading" id="VXx-lO-lRz"/>
                         <constraint firstItem="7FF-nH-CSc" firstAttribute="top" secondItem="LFU-9S-N4w" secondAttribute="bottom" constant="20" id="bKn-CA-QRp"/>
-                        <constraint firstItem="Dv3-ar-AEM" firstAttribute="top" secondItem="UED-NC-Eqg" secondAttribute="bottom" constant="20" id="bqa-P7-gg4"/>
+                        <constraint firstItem="Dv3-ar-AEM" firstAttribute="top" secondItem="UED-NC-Eqg" secondAttribute="bottom" constant="15" id="bqa-P7-gg4"/>
                         <constraint firstAttribute="bottom" secondItem="7FF-nH-CSc" secondAttribute="bottom" constant="20" id="cY8-q4-Ei4"/>
                         <constraint firstItem="5MX-9z-NKS" firstAttribute="centerX" secondItem="Acv-CJ-InF" secondAttribute="centerX" id="dFk-Ea-Qac"/>
                         <constraint firstItem="LFU-9S-N4w" firstAttribute="centerX" secondItem="Acv-CJ-InF" secondAttribute="centerX" id="pL9-nJ-2Ye"/>
