@@ -12,6 +12,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface RepayMentViewController : BaseViewController
 @property (nonatomic, assign) BOOL canReLoan;
+@property (nonatomic, strong) NSString * navTitle;
 @end
 
 NS_ASSUME_NONNULL_END

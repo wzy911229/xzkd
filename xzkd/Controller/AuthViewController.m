@@ -17,6 +17,7 @@
 #import "XZUDIDManager.h"
 #import "XZUDIDService.h"
 #import "XZKDExtraAuthViewController.h"
+#import "LoanViewController.h"
 
 static NSString * const KSESSIONID_KEY = @"session_id";
 
@@ -55,7 +56,7 @@ static NSString *authViewTableCellIdentify = @"AuthViewTableCellIdentify";
     
     self.title = @"认证";
     
-    _titleArray = @[@"个人信息",@"活体认证",@"附加认证",@"运营商认证",@"银行认证"];
+    _titleArray = @[@"个人信息",@"人脸识别",@"紧急联系人",@"运营商认证",@"银行认证"];
     _imageArray = @[@"grxx", @"htrz" ,@"excess_deal_icon",@"yys",@"bdyhk"];
     
     _table.delegate = self;
@@ -73,14 +74,15 @@ static NSString *authViewTableCellIdentify = @"AuthViewTableCellIdentify";
     _ocrManager = [[XZUDIDManager alloc] initWithDelegate:self];
     [SVProgressHUD  setMinimumDismissTimeInterval:0.5];
     
-    [self getUserAuthStatus];
     self.view.backgroundColor = kBaseViewColor;
     
 }
 
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
+
+- (void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
     [self getUserAuthStatus];
+
 }
 
 
@@ -380,6 +382,14 @@ static NSString *authViewTableCellIdentify = @"AuthViewTableCellIdentify";
     [iSeeNetworkRequest postWithHeaderUrl:kFormat(@"%@%@", MainUrl, kGetUserAuthStatus) params:[NSDictionary dictionary] success:^(id object) {
         
         self.model = [AuthStatusModel mj_objectWithKeyValues:object[@"data"]];
+        
+        
+        if ([self.model.repayStatus integerValue] == 1) {
+            LoanViewController *vc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil]  instantiateViewControllerWithIdentifier:@"LoanViewController"];
+            [self.navigationController pushViewController:vc animated:YES];
+            return ;
+        }
+        
         
         [self.table reloadData];
         self.submitButton.enabled = self.model.allAuthSuccess;

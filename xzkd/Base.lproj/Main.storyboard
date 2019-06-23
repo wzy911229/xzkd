@@ -976,8 +976,8 @@
                                     <action selector="reLoanAction:" destination="pI9-EQ-BcA" eventType="touchUpInside" id="GpH-IM-Pfs"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="预计3-5分钟还款确认成功" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F1l-As-q5a">
-                                <rect key="frame" x="69" y="254" width="237" height="24"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="预计3-5分钟确认成功" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F1l-As-q5a">
+                                <rect key="frame" x="89" y="254" width="197" height="24"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -1000,6 +1000,7 @@
                     </view>
                     <connections>
                         <outlet property="reLoanButton" destination="eUd-wP-aVP" id="rh9-2K-0d0"/>
+                        <outlet property="titleLabel" destination="3b5-42-1x0" id="Mgf-2A-KRh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0dO-uc-jHh" userLabel="First Responder" sceneMemberID="firstResponder"/>

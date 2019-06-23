@@ -95,12 +95,12 @@
 
 - (void)requestTOLoadRenewPayment {
     __weak typeof (self) weakSelf = self;
-    [iSeeNetworkRequest postWithHeaderUrl:kFormat(@"%@%@", MainUrl, kRenewPayment) params:nil success:^(id object) {
-        [SVProgressHUD dismiss];
+//    [iSeeNetworkRequest postWithHeaderUrl:kFormat(@"%@%@", MainUrl, kRenewPayment) params:nil success:^(id object) {
+//        [SVProgressHUD dismiss];
         [weakSelf showPayAler];
-    } failure:^(NSError *error) {
-        [error showInSVProgressHUD];
-    }];
+//    } failure:^(NSError *error) {
+//        [error showInSVProgressHUD];
+//    }];
     
 }
 
@@ -111,7 +111,6 @@
     [SVProgressHUD show];
     [iSeeNetworkRequest postWithHeaderUrl:kFormat(@"%@%@", MainUrl, KQuickPaySmsConfirm) params:parama success:^(id object) {
         [SVProgressHUD dismiss];
-    
         [SVProgressHUD showSuccessWithStatus:@"展期成功"];
         [(AppDelegate *)kApplicationDelegate goAuth];
         

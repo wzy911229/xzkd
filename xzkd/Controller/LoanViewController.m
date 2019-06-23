@@ -40,11 +40,11 @@
     //    [self p_setText:@"借款金额：2000元 \n年利率：24% \n还款时间：2019年5月6日 \n到期还款：2009.3元" lineHeight:23 alignment:NSTextAlignmentLeft label:self.contentLabel];
     [self loadData];
     
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] bk_initWithTitle:@"切换银行卡" style:UIBarButtonItemStylePlain handler:^(id sender) {
-        BankCardAuthViewController *bank = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"BankCardAuthViewController"];
-        bank.hiddenHeader = YES;
-        [self.navigationController pushViewController:bank animated:YES];
-    }];
+//    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] bk_initWithTitle:@"切换银行卡" style:UIBarButtonItemStylePlain handler:^(id sender) {
+//        BankCardAuthViewController *bank = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"BankCardAuthViewController"];
+//        bank.hiddenHeader = YES;
+//        [self.navigationController pushViewController:bank animated:YES];
+//    }];
     
     
     NSMutableArray * array =[[NSMutableArray alloc]initWithArray:self.navigationController.viewControllers];
@@ -78,10 +78,10 @@
 - (IBAction)loanAction:(id)sender {
     self.payType = 2;
     [SVProgressHUD show];
-    [iSeeNetworkRequest postWithHeaderUrl:kFormat(@"%@%@", MainUrl, KGetAuthScore) params:nil success:^(id object) {
+ [iSeeNetworkRequest postWithHeaderUrl:kFormat(@"%@%@", MainUrl, kRenewPayment) params:nil success:^(id object) {
         [SVProgressHUD dismiss];
         self.payDic = object[@"data"];
-        self.alertView.serviceMoney = 2.0;
+        self.alertView.serviceMoney = [self.payDic[@"amt"] doubleValue];
         [self.alertView show];
     } failure:^(NSError *error) {
         [error showInSVProgressHUD];
@@ -106,71 +106,12 @@
     [SVProgressHUD show];
     [iSeeNetworkRequest postWithHeaderUrl:kFormat(@"%@%@", MainUrl, KQuickPaySmsConfirm) params:parama success:^(id object) {
         [SVProgressHUD dismiss];
-        
         RepayMentViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"RepayMentViewController"];
-        vc.canReLoan = YES;
+        vc.navTitle = @"展期成功";
         [self.navigationController pushViewController:vc animated:YES];
-        
-        NSMutableArray * array =[[NSMutableArray alloc]initWithArray:self.navigationController.viewControllers];
-        if (array.count > 2) {
-            [array removeObjectAtIndex:array.count-1];
-            [self.navigationController setViewControllers:array animated:YES];
-        }
-
     } failure:^(NSError *error) {
         [error showInSVProgressHUD];
     }];
-    
-}
-
-
-- (void)pay:(NSDictionary *)dic {
-    
-    NSString * myVERSION = [NSString stringWithFormat:@"2.0"];
-    NSString * myMCHNTCD = kFormat(@"%@", dic[@"mchntCd"]);
-    NSString * myMCHNTORDERID = kFormat(@"%@", dic[@"orderId"]);
-    NSString * myUSERID = kFormat(@"%@", dic[@"userId"]);
-    NSString * myAMT = kFormat(@"%@", dic[@"amt"]);
-    NSString * myBANKCARD = kFormat(@"%@", dic[@"cardNo"]);
-    NSString * myBACKURL = kFormat(@"%@", dic[@"backUrl"]);
-    NSString * myNAME = kFormat(@"%@", dic[@"userName"]);
-    NSString * myIDNO = kFormat(@"%@", dic[@"idNo"]);
-    NSString * myIDTYPE = kFormat(@"%@", dic[@"IDCardType"]);
-    NSString * myTYPE = [NSString stringWithFormat:@"02"];
-    NSString * mySIGNTP = [NSString stringWithFormat:@"MD5"];
-    //商户号秘钥  必填
-    NSString * myMCHNTCDKEY= kFormat(@"%@", dic[@"key"]);
-    NSString * mySIGN = [NSString stringWithFormat:@"%@|%@|%@|%@|%@|%@|%@|%@|%@|%@|%@|%@", myTYPE,myVERSION,myMCHNTCD,myMCHNTORDERID,myUSERID,myAMT,myBANKCARD,myBACKURL,myNAME,myIDNO,myIDTYPE,myMCHNTCDKEY];
-    mySIGN = [mySIGN MD5String];
-    
-    //添加环境参数  BOOL 变量 @"TEST"   YES 是测试  NO 是生产
-    BOOL test = NO;
-    NSNumber * testNumber = [NSNumber numberWithBool:test];
-    NSDictionary * dicD = @{@"TYPE":myTYPE,@"VERSION":myVERSION,@"MCHNTCD":myMCHNTCD,@"MCHNTORDERID":myMCHNTORDERID,@"USERID":myUSERID,@"AMT":myAMT,@"BANKCARD":myBANKCARD,@"BACKURL":myBACKURL,@"NAME":myNAME,@"IDNO":myIDNO,@"IDTYPE":myIDTYPE,@"SIGNTP":mySIGNTP,@"SIGN":mySIGN , @"TEST" : testNumber} ;
-    NSLog(@"😄dicD =%@ " , dicD);
-    
-    FUMobilePay * pay = [FUMobilePay shareInstance];
-    if([pay respondsToSelector:@selector(mobilePay:delegate:)])
-        [pay performSelector:@selector(mobilePay:delegate:) withObject:dicD withObject:self];
-}
-
-
-- (void)payCallBack:(BOOL) success responseParams:(NSDictionary*) responseParams{
-    NSInteger responseCode = [responseParams[@"RESPONSECODE"] integerValue];
-    if (responseCode == 0) {
-        //成功
-        if (self.payType == 2) {
-            [self loadData];
-            [SVProgressHUD showSuccessWithStatus:@"续借成功"];
-        } else {
-            RepayMentViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"RepayMentViewController"];
-            vc.canReLoan = YES;
-            [self.navigationController pushViewController:vc animated:YES];
-        }
-    } else {
-        //失败
-        [SVProgressHUD showErrorWithStatus:@"支付失败"];
-    }
 }
 
 
@@ -184,10 +125,14 @@
 
 - (void)loanAlertViewAction {
     
-    AuthResultViewController *vc = (AuthResultViewController *)[self.storyboard instantiateViewControllerWithIdentifier:@"AuthResultViewController"];
-//    vc.userStuatus = 1;
-    vc.loanType = 1;
-    [self.navigationController pushViewController:vc animated:YES];
+    
+    [self showPayAler];
+
+    
+//    AuthResultViewController *vc = (AuthResultViewController *)[self.storyboard instantiateViewControllerWithIdentifier:@"AuthResultViewController"];
+////    vc.userStuatus = 1;
+//    vc.loanType = 1;
+//    [self.navigationController pushViewController:vc animated:YES];
     
 }
 
@@ -205,7 +150,14 @@
     [alertController addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         UITextField *envirnmentNameTextField = alertController.textFields.firstObject;
         [weakSelf paySmsConfirm:envirnmentNameTextField.text];
+        
     }]];
+    
+    [alertController addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+        
+                    
+        
+    }]] ;
     
     [self presentViewController:alertController animated:true completion:nil];
     

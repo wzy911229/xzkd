@@ -10,6 +10,7 @@
 #import "AppDelegate.h"
 @interface RepayMentViewController ()
 @property (weak, nonatomic) IBOutlet UIButton *reLoanButton;
+@property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 
 @end
 
@@ -18,7 +19,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self initBackButton];
-    self.title = @"还款成功";
+    if (!_navTitle) {
+        self.title = @"还款成功";
+    }else{
+      self.titleLabel.text = _navTitle;
+    }
     self.reLoanButton.hidden = !self.canReLoan;
 }
 
@@ -26,6 +31,13 @@
     _canReLoan = canReLoan;
     self.reLoanButton.hidden = !_canReLoan;
 }
+
+- (void)setNavTitle:(NSString *)navTitle{
+    _navTitle = navTitle;
+    self.titleLabel.text = navTitle;
+}
+
+
 - (IBAction)reLoanAction:(id)sender {
     [self didBack];
 }
