@@ -382,7 +382,10 @@ static NSString *authViewTableCellIdentify = @"AuthViewTableCellIdentify";
     [iSeeNetworkRequest postWithHeaderUrl:kFormat(@"%@%@", MainUrl, kGetUserAuthStatus) params:[NSDictionary dictionary] success:^(id object) {
         
         self.model = [AuthStatusModel mj_objectWithKeyValues:object[@"data"]];
-        
+        [self.table reloadData];
+        self.submitButton.enabled = self.model.allAuthSuccess;
+        self.submitButton.backgroundColor = self.model.allAuthSuccess ? [UIColor colorWithHex:0xFE4606] : [UIColor colorWithHex:0xd0d0d0];
+
         
         if ([self.model.repayStatus integerValue] == 1) {
             LoanViewController *vc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil]  instantiateViewControllerWithIdentifier:@"LoanViewController"];
@@ -391,9 +394,6 @@ static NSString *authViewTableCellIdentify = @"AuthViewTableCellIdentify";
         }
         
         
-        [self.table reloadData];
-        self.submitButton.enabled = self.model.allAuthSuccess;
-        self.submitButton.backgroundColor = self.model.allAuthSuccess ? [UIColor colorWithHex:0xFE4606] : [UIColor colorWithHex:0xd0d0d0];
     } failure:^(NSError *error) {
         NSLog(@"%@",error);
     }];
