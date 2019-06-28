@@ -141,8 +141,8 @@ blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
 
 
 // UDIDSDK_OCR KEYS
-#define KUDPUBKEY  @"e499e677-d2b7-4f02-b0af-a9bb4a81f150" // 商户pubkey
-#define KUDSECURITYKEY @"ef08a4a7-de5e-4890-99ce-0ba446de213a" // 商户secretkey
+#define KUDPUBKEY  @"7d71eb2e-1886-468c-bb1b-ed2791d9f213" // 商户pubkey
+#define KUDSECURITYKEY @"71d056b4-7946-4dec-842f-3a54e99c244f" // 商户secretkey
 
 
 
@@ -159,9 +159,9 @@ blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
 #define KStatusBarH  INTERFACE_IS_IPHONEX ? 44:20
 //网络请求
 #import "NetworkAddress.h"
-#define MainUrl @"http://www.soadna.com/"
+#define MainUrl @"http://api.xhsqianbao.com/"
 //#define MainUrl @"http://mapi.91xzsd.com/"
-#define APIBASEURL  @"http://www.soadna.com/"
+#define APIBASEURL  @"http://api.xhsqianbao.com/"
 
 
 #endif /* UIMacro_h */

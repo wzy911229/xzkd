@@ -17,9 +17,9 @@
 #import "Md5.h"
 
 static NSString *const XYBaseURL = @"https://qz.xinyan.com/h5";
-static NSString *const XYApiUser = @"8150735681";
+static NSString *const XYApiUser = @"8150738635";
 static NSString *const XYApiName = @"carrier";
-static NSString *const XYApiKey = @"6IZa38b97662d299";
+static NSString *const XYApiKey = @"Mlk8gk0851Dxn80U";
 static NSString *const XYheadVisible = @"0";
 
 

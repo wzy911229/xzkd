@@ -97,6 +97,11 @@
 				<key>NSIncludesSubdomains</key>
 				<true/>
 			</dict>
+			<key>api.xhsqianbao.com</key>
+			<dict>
+				<key>NSExceptionAllowsInsecureHTTPLoads</key>
+				<true/>
+			</dict>
 			<key>gtimg.cn</key>
 			<dict>
 				<key>NSExceptionAllowsInsecureHTTPLoads</key>
@@ -163,11 +168,6 @@
 				<key>NSExceptionRequiresForwardSecrecy</key>
 				<false/>
 				<key>NSIncludesSubdomains</key>
-				<true/>
-			</dict>
-			<key>www.soadna.com</key>
-			<dict>
-				<key>NSExceptionAllowsInsecureHTTPLoads</key>
 				<true/>
 			</dict>
 		</dict>
