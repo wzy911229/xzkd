@@ -1115,7 +1115,7 @@
 					"\"UIKit\"",
 					"-lstdc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = yiwujunyi.SuperLoans.com;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ganzi.ios.purse;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = pigFinance;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -1203,7 +1203,7 @@
 					"\"UIKit\"",
 					"-lstdc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = yiwujunyi.SuperLoans.com;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ganzi.ios.purse;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = pigFinance;
 				TARGETED_DEVICE_FAMILY = 1;
