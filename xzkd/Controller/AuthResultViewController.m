@@ -165,8 +165,6 @@
     
     [alertController addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
         
-                    
-        
     }]] ;
 
     [self presentViewController:alertController animated:true completion:nil];

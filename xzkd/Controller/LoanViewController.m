@@ -25,6 +25,7 @@
 @property (nonatomic, assign) NSInteger payType;
 @property (nonatomic, strong) LoanAlertView *alertView;
 @property (nonatomic, strong) NSDictionary  *payDic;
+@property (nonatomic, assign) BOOL  isRenew;
 @end
 
 @implementation LoanViewController{
@@ -78,6 +79,7 @@
 - (IBAction)loanAction:(id)sender {
     self.payType = 2;
     [SVProgressHUD show];
+    self.isRenew = YES;
  [iSeeNetworkRequest postWithHeaderUrl:kFormat(@"%@%@", MainUrl, kRenewPayment) params:nil success:^(id object) {
         [SVProgressHUD dismiss];
         self.payDic = object[@"data"];
@@ -89,6 +91,7 @@
 }
 - (IBAction)repaymentButtonAction:(id)sender {
     self.payType = 1;
+    self.isRenew = false;
     [SVProgressHUD show];
     __weak typeof(self) weakSelf = self;
     [iSeeNetworkRequest postWithHeaderUrl:kFormat(@"%@%@", MainUrl, kPayment) params:nil success:^(id object) {
@@ -101,13 +104,15 @@
 
 
 
-- (void)paySmsConfirm:(NSString*)VerifyCode {
+- (void)paySmsConfirm:(NSString*)VerifyCode{
     NSDictionary*parama = @{ @"VerifyCode":VerifyCode };
     [SVProgressHUD show];
     [iSeeNetworkRequest postWithHeaderUrl:kFormat(@"%@%@", MainUrl, KQuickPaySmsConfirm) params:parama success:^(id object) {
         [SVProgressHUD dismiss];
         RepayMentViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"RepayMentViewController"];
-        vc.navTitle = @"展期成功";
+        if ( self.isRenew) {
+            vc.navTitle = @"展期成功";
+        }
         [self.navigationController pushViewController:vc animated:YES];
     } failure:^(NSError *error) {
         [error showInSVProgressHUD];
